@@ -4,3 +4,15 @@ You wugga wug.
 I wug.
 
 2)
+No variables are in the program. Methods are called in the following order:
+main()
+zoop()
+baffle()
+ping()
+baffle()
+ping()
+baffle()
+ping()
+
+3) 
+Would create an infinite loop as each method calls the other.
