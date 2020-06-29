@@ -6,6 +6,8 @@ public class Recursion {
     System.out.println(fibonacci(2));
     System.out.println(fibonacci(6));
 
+    int[] testArr = {1, 2, 3, 4};
+    System.out.println(recursiveSum(testArr, testArr.length));
   }
 
   public static int factorial(int n){
@@ -23,6 +25,15 @@ public class Recursion {
     }
     else{
       return fibonacci(n - 2) + fibonacci(n - 1);
+    }
+  }
+
+  public static int recursiveSum(int[] arr, int n){
+    if (n == 0){
+      return 0;
+    }
+    else{
+      return (recursiveSum(arr, n - 1) + arr[n - 1]);
     }
   }
 }
