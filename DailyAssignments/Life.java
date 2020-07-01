@@ -4,20 +4,24 @@ public class Life{
     board = createNewBoard(25, 25);
     printBoard(board);
 
-    setCell(board, 3, 3, 'O');
-    printBoard(board);
+    //setCell(board, 3, 3, 'O');
   }//end main method
 
   public static char[][] createNewBoard(int rows, int cols){
     char board[][] = new char[rows][cols];
     for (int r = 0; r < rows; r++) {
       for (int c = 0; c < cols; c++){
-        board[r][c] = 'X';
+        int rand = (int)(Math.random() * 10);
+        if (rand < 3){
+          board[r][c] = 'X';
+        }//end if
+        else{
+          board[r][c] = ' ';
+        }//end else
       }//end inner for loop (c)
     }//end outer for loop (r)
     return board;
   }
-
 
   public static void printBoard(char[][] board){
     for (int r = 0; r < board.length; r++) {
@@ -48,8 +52,8 @@ public class Life{
     return count;
   }
 
-  public static board[][] generateNextBoard(char[][] board){
-    char newBoard = char[25][25];
+  public static char[][] generateNextBoard(char[][] board){
+    char[][] newBoard = new char[25][25];
 
     return newBoard;
 
