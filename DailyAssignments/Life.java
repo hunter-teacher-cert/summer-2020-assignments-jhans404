@@ -1,10 +1,13 @@
 public class Life{
   public static void main(String[] args) {
     char[][] board;
-    board = createNewBoard(25, 25);
+    int numRows = 30;
+    int numCols = 30;
+
+    board = createNewBoard(numRows, numCols);
     printBoard(board);
 
-    for (int plays = 0; plays < 10; plays++){
+    for (int plays = 0; plays < 100; plays++){
       board = generateNextBoard(board);
       printBoard(board);
     }
@@ -42,7 +45,11 @@ public class Life{
       }//end inner for loop (c)
       System.out.println();
     }//end outer for loop (r);
-    System.out.println("\n--------------------------------------------------\n");
+    String line = "";
+    for (int i = 0; i < board[0].length; i++){
+      line += "- ";
+    }
+    System.out.println("\n" + line + "\n");
   }//end printBoard method
 
 
@@ -73,8 +80,8 @@ public class Life{
     for (int i = -1; i <= 1; i++){
       for (int j = -1; j <= 1; j++){
         //find a 'live' neightbor
-        int col = (r + i + 25) % 25;
-        int row = (c + j + 25) % 25;
+        int col = (r + i + board[0].length) % board[0].length;
+        int row = (c + j + board.length) % board.length;
         if (board[col][row] == 'X'){
           count++;
         }//end conditional
@@ -89,7 +96,7 @@ public class Life{
   }//end countNeighbors method
 
   public static char[][] generateNextBoard(char[][] board){
-    char[][] newBoard = new char[25][25];
+    char[][] newBoard = new char[board.length][board[0].length];
     for (int row = 0; row < board.length; row++){
       for (int col = 0; col < board[row].length; col++){
         setCell(newBoard, row, col, nextGenCell(board, row, col));
