@@ -4,8 +4,14 @@ public class Life{
     board = createNewBoard(25, 25);
     printBoard(board);
 
-    printBoard(generateNextBoard(board));
+    board = generateNextBoard(board);
+    printBoard(board);
 
+    board = generateNextBoard(board);
+    printBoard(board);
+
+    board = generateNextBoard(board);
+    printBoard(board);
     //setCell(board, 3, 3, 'O');
   }//end main method
 
@@ -54,9 +60,6 @@ public class Life{
   public static char nextGenCell(char[][] board, int r, int c){
     char currentState = board[r][c];
     int aliveNeighbors = countNeighbors(board, r, c);
-    if (r == 7 && c == 6){
-      System.out.println(aliveNeighbors);
-    }
     if (currentState == ' ' && aliveNeighbors == 3){
       return 'X';
     }//end if
@@ -73,10 +76,11 @@ public class Life{
 
     //if within border
     if (r > 0 && r < board.length - 1 && c > 0 && c < board[r].length - 1){
-      for (int i = -1; i < 2; i++){
-        for (int j = -1; j < 2; j++){
+      //loop around all neighbors
+      for (int i = -1; i <= 1; i++){
+        for (int j = -1; j <= 1; j++){
           //find a 'live' neightbor
-          if (board[r + i][r + j] == 'X'){
+          if (board[r + i][c + j] == 'X'){
             count++;
           }//end conditional
         }//end inner loop (j)
