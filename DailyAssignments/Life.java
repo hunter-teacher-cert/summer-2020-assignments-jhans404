@@ -4,6 +4,8 @@ public class Life{
     board = createNewBoard(25, 25);
     printBoard(board);
 
+    printBoard(generateNextBoard(board));
+
     //setCell(board, 3, 3, 'O');
   }//end main method
 
@@ -11,15 +13,23 @@ public class Life{
     char board[][] = new char[rows][cols];
     for (int r = 0; r < rows; r++) {
       for (int c = 0; c < cols; c++){
-        int rand = (int)(Math.random() * 10);
-        if (rand < 3){
-          board[r][c] = 'X';
-        }//end if
-        else{
-          board[r][c] = ' ';
-        }//end else
+        // int rand = (int)(Math.random() * 10);
+        // if (rand < 3){
+        //   board[r][c] = 'X';
+        // }//end if
+        // else{
+        //   board[r][c] = ' ';
+        // }//end else
+        board[r][c] = ' ';
       }//end inner for loop (c)
     }//end outer for loop (r)
+
+    //make glider
+    board[5][5] = 'X';
+    board[6][6] = 'X';
+    board[7][4] = 'X';
+    board[7][5] = 'X';
+    board[7][6] = 'X';
     return board;
   }
 
@@ -42,20 +52,54 @@ public class Life{
 
 
   public static char nextGenCell(char[][] board, int r, int c){
-
-    return ' ';
+    char currentState = board[r][c];
+    int aliveNeighbors = countNeighbors(board, r, c);
+    if (r == 7 && c == 6){
+      System.out.println(aliveNeighbors);
+    }
+    if (currentState == ' ' && aliveNeighbors == 3){
+      return 'X';
+    }//end if
+    else if (currentState == 'X' && (aliveNeighbors < 2 || aliveNeighbors > 3)){
+      return ' ';
+    }//end else if
+    else{
+      return currentState;
+    }//end else
   }//end nextGenCell method
 
   public static int countNeighbors(char[][] board, int r, int c){
     int count = 0;
 
-    return count;
-  }
+    //if within border
+    if (r > 0 && r < board.length - 1 && c > 0 && c < board[r].length - 1){
+      for (int i = -1; i < 2; i++){
+        for (int j = -1; j < 2; j++){
+          //find a 'live' neightbor
+          if (board[r + i][r + j] == 'X'){
+            count++;
+          }//end conditional
+        }//end inner loop (j)
+      }//end outer loop (i)
+
+      //remove yourself from the count if you're 'alive'
+      if (board[r][c] == 'X'){
+        return (count - 1);
+      }//end if
+      return count;
+    }
+    else{
+      return 0;
+    }
+  }//end countNeighbors method
 
   public static char[][] generateNextBoard(char[][] board){
     char[][] newBoard = new char[25][25];
-
+    for (int row = 0; row < board.length; row++){
+      for (int col = 0; col < board[row].length; col++){
+        setCell(newBoard, row, col, nextGenCell(board, row, col));
+      }
+    }
     return newBoard;
-
   }//end generateNextBoard method
 }//end class
