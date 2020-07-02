@@ -1,8 +1,8 @@
 public class Life{
   public static void main(String[] args) {
     char[][] board;
-    int numRows = 30;
-    int numCols = 30;
+    int numRows = 25;
+    int numCols = 25;
 
     board = createNewBoard(numRows, numCols);
     printBoard(board);
@@ -39,9 +39,15 @@ public class Life{
   }
 
   public static void printBoard(char[][] board){
+    System.out.print("\033[1;0H\n");
     for (int r = 0; r < board.length; r++) {
       for (int c = 0; c < board[r].length; c++){
-        System.out.printf("%c ", board[r][c]);
+        if (board[r][c] == 'X'){
+          System.out.printf("\u001B[42m%c \u001B[0m", board[r][c]);
+        }//end if
+        else{
+          System.out.printf("%c ", board[r][c]);
+        }
       }//end inner for loop (c)
       System.out.println();
     }//end outer for loop (r);
@@ -104,4 +110,6 @@ public class Life{
     }
     return newBoard;
   }//end generateNextBoard method
+
+
 }//end class
