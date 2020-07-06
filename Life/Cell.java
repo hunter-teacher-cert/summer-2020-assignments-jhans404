@@ -19,16 +19,8 @@ public class Cell {
   }//end getState method
 
   public boolean nextGen(int n){
-    if (!this.state && n == 3){ //dead to become alive
-      return true;
-    }//end if
-    else if (this.state && (n == 2 || n == 3)){ //alive and staying alive
-      return true;
-    }//end else if
-    else{ //will be dead 
-      return false;
-    }//end else
-  }//end setState method\
+    return ((!this.state && n == 3) || (this.state && (n == 2 || n == 3))){
+  }//end setState method
 
   public void setState(boolean newState){
     this.state = newState;

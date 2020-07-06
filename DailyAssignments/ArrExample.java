@@ -2,13 +2,13 @@ public class ArrExample{
   public static void main(String[] args){
     int[][] arr = new int[10][10];
 
-    //rowPop(arr, 2, 10);
-    //colPop(arr, 3, 255);
-    //invert(arr);
-    diagonal(arr, 8, 3, 0, 111);
-    diagonal(arr, 0, 5, 1, 222);
-    diagonal(arr, 6, 6, 2, 333);
-    diagonal(arr, 0, 0, 3, 444);
+    // rowPop(arr, 2, 10);
+    // colPop(arr, 3, 255);
+    // invert(arr);
+    // diagonal(arr, 8, 3, 0, 111);
+    // diagonal(arr, 0, 5, 1, 222);
+    // diagonal(arr, 6, 6, 2, 333);
+    // diagonal(arr, 0, 0, 3, 444);
 
     print2d(arr);
 

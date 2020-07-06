@@ -7,7 +7,7 @@ public class Life{
     board = createNewBoard(numRows, numCols);
     printBoard(board);
 
-    for (int plays = 0; plays < 100; plays++){
+    for (int plays = 0; plays < 1000; plays++){
       board = generateNextBoard(board);
       printBoard(board);
     }
@@ -43,7 +43,7 @@ public class Life{
     for (int r = 0; r < board.length; r++) {
       for (int c = 0; c < board[r].length; c++){
         if (board[r][c] == 'X'){
-          System.out.printf("\u001B[42m%c \u001B[0m", board[r][c]);
+          System.out.printf("\u001B[42m%c\u001B[0m ", board[r][c]);
         }//end if
         else{
           System.out.printf("%c ", board[r][c]);

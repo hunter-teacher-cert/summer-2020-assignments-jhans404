@@ -26,4 +26,11 @@ public class Loops{
       return n;
     }
   }
+
+  public static int myexp(int x, int n){
+    total = 0;
+    for (int i = 0; i < n; i++){
+      total += (power(x, i) / factorial(i));
+    }
+  }
 }

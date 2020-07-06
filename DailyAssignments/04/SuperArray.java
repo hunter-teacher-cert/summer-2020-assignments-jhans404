@@ -6,10 +6,16 @@ public class SuperArray{
     this.arr = new int[n];
   }//end constructor method
 
+  /*
   public SuperArray(){
     this.arr = new int[10];
   }//end constructor method
+  */
 
+  public SuperArray(){
+    this(10);
+  }
+  
   public void add(int val){
     if (this.numElements < this.arr.length){
       this.arr[this.numElements] = val;
