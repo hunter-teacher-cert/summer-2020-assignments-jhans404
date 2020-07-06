@@ -12,6 +12,7 @@ public class SuperArray{
   }//end constructor method
   */
 
+  //shortcut call
   public SuperArray(){
     this(10);
   }
@@ -21,7 +22,29 @@ public class SuperArray{
       this.arr[this.numElements] = val;
       numElements++;
     }//end if-statment
+    else{
+      grow(1);
+      add(val);
+    }//end else
   }//end add method
+
+  public void add(int index, int val){
+    if (index == numElements){
+      grow(1);
+    }//end if-statment
+
+    for (int i = this.numElements; i > index; i--){
+      this.arr[i] = this.arr[i - 1];
+    }//end for loop (i)
+
+    this.arr[index] = val;
+    this.numElements++;
+
+  }//end add method
+
+  public void set(int i, int val){
+    this.arr[i] = val;
+  }//end set method
 
   public int get(int i){
     if (i < this.numElements){
@@ -35,6 +58,22 @@ public class SuperArray{
   public boolean isEmpty(){
     return this.numElements == 0;
   }//end isEmpty method
+
+  public void grow(int n){
+    int [] largerArray = new int[this.arr.length + n];
+    for (int i = 0; i < this.numElements; i++){
+      largerArray[i] = this.arr[i];
+    }//end for loop (i)
+    this.arr = largerArray;
+  }//end grow method
+
+  public void remove(int index){
+    for (int i = index; i < this.numElements; i++){
+      this.arr[i] = this.arr[i + 1];
+    }//end for loop (i)
+    this.arr[numElements] = 0;
+    numElements--;
+  }//end remove method
 
   public String toString(){
     String output = "";
