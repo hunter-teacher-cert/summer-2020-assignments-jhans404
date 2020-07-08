@@ -17,6 +17,7 @@ public class LList{
     this.length++;
   }//end add method
 
+
   public String get(int index){
     Node currentNode = this.head;
     if (index < this.length){
@@ -28,17 +29,6 @@ public class LList{
     return null;
   }//end get method
 
-  //without the instance variable implemented
-    // while (i < index){
-    //   if (currentNode.getNext() != null){
-    //     currentNode = currentNode.getNext();
-    //     i++;
-    //   }//end if-statement
-    //   else{
-    //     return null;
-    //   }//end else-statement
-    // }//end while loop
-    // return currentNode.getData();
 
   public void set(int index, String value){
     Node currentNode = this.head;
@@ -51,17 +41,6 @@ public class LList{
     return;
   }//end set method
 
-  //without the instance variable implemented
-    // while (i < index){
-    //   if (currentNode.getNext() != null){
-    //     currentNode = currentNode.getNext();
-    //     i++;
-    //   }//end if-statement
-    //   else{
-    //     return;
-    //   }//end else-statement
-    // }//end while loop
-    // currentNode.setData(value);
 
   public void insert(int index, String value){
     if (index == 0){
@@ -69,22 +48,18 @@ public class LList{
     }//end if-statement
     else{
       Node currentNode = this.head;
-      int i = 1;
-      while (i < index){
-        if (currentNode.getNext() != null){
-          currentNode = currentNode.getNext();
-          i++;
-        }//end if-statement
-        else{
+      for (int i = 0; i < index - 1; i++){
+        currentNode = currentNode.getNext();
+        if (currentNode == null){
           return;
-        }
-      }//end while loop
-      Node newNode = new Node(value);
-      newNode.setNext(currentNode.getNext());
-      currentNode.setNext(newNode);
-      this.length++;
+        }//end if-statement
+      }//end for loop
+      Node newNode = currentNode.getNext();
+      currentNode.setNext(new Node(value, newNode));
+      length++;
     }//end else-statement
   }//end insert method
+
 
   public int search(String key){
     Node currentNode = this.head;
@@ -97,21 +72,6 @@ public class LList{
     return -1;
   }//end search method
 
-  //without the instance variable implemented
-    // Node currentNode = this.head;
-    // int index = 0;
-    // if (currentNode.getData().equals(key)){
-    //   return index;
-    // }//end if-statement
-    // while (currentNode.getNext() != null){
-    //   index++;
-    //   currentNode = currentNode.getNext();
-    //   if (currentNode.getData().equals(key)){
-    //     return index;
-    //   }//end if-statement
-    // }//end while loop
-    // return -1;
-
 
   public void remove(int index){
     if (index == 0){
@@ -119,24 +79,22 @@ public class LList{
     }//end if-statement
     else{
       Node currentNode = this.head;
-      int i = 0;
-      while (i < index - 1){
-        if (currentNode.getNext() != null){
-          currentNode = currentNode.getNext();
-          i++;
-        }//end if-statement
-        else{
+      for (int i = 0; i < index - 1; i++){
+        currentNode = currentNode.getNext();
+        if (currentNode == null){
           return;
-        }
-      }//end while loop
+        }//end if-statement
+      }//end for loop
       currentNode.setNext(currentNode.getNext().getNext());
-      this.length--;
     }//end else-statement
+    this.length--;
   }//end remove method
+
 
   public boolean isEmpty(){
     return (this.head == null);
   }//end isEmpty method
+
 
   public String toString(){
     String s = "< ";
