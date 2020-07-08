@@ -15,7 +15,6 @@ public class LList{
     head = newnode; // point head to the new node
   }//end add method
 
-
   public String get(int index){
     Node currentNode = this.head;
     String theData = "";
@@ -86,7 +85,24 @@ public class LList{
   }//end search method
 
   public void remove(int index){
-    
+    if (index == 0){
+      this.head = this.head.getNext();
+    }//end if-statement
+    else{
+      Node currentNode = this.head;
+      int i = 0;
+      while (i < index - 1){
+        if (currentNode.getNext() != null){
+          currentNode = currentNode.getNext();
+          i++;
+        }//end if-statement
+        else{
+          return;
+        }
+      }//end while loop
+      currentNode.setNext(currentNode.getNext().getNext());
+
+    }//end else-statement
   }//end remove method
 
   public boolean isEmpty(){
@@ -94,19 +110,19 @@ public class LList{
   }//end isEmpty method
 
   public String toString(){
-    String s = "";
+    String s = "< ";
 
     Node tmp;
     tmp = head;
     while (tmp != null){
-      s = s + tmp.getData()+"-->";
+      s = s + tmp.getData()+" ";
       // how can we now move tmp to the next node
       // this is the magic linked list idiom!!!!
       // this moves a pointer to the next node!!!
       // It's analagous to i=i+1 for an array (for loop)
       tmp = tmp.getNext();
     }//end while loop
-    s = s + "null";
+    s = s + ">";
     return s;
   }//end toString method
 
