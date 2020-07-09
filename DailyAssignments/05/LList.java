@@ -10,8 +10,12 @@ public class LList{
     this.length = 0;
   }//end constructor method
 
-  public void addFront(String data){
-    Node newnode = new Node(data);
+  public void addFront(String value){
+    if (value == null){//exception
+      throw new IllegalArgumentException();
+    }//end if-statement
+
+    Node newnode = new Node(value);
     newnode.setNext(head); // first point the new node to the beginning
     this.head = newnode; // point head to the new node
     this.length++;
@@ -19,6 +23,10 @@ public class LList{
 
 
   public String get(int index){
+    if (index > this.length){//exception
+      throw new IndexOutOfBoundsException();
+    }//end if-statement
+
     Node currentNode = this.head;
     if (index < this.length){
       for (int i = 0; i < index; i++){
@@ -29,8 +37,21 @@ public class LList{
     return null;
   }//end get method
 
+  // private Node nodeAtIndex(int index) {
+	// 	int i = 0;
+	// 	Node ptr = head;
+	// 	while ((ptr != null) && (i < index)) {
+	// 		ptr = ptr.getNext();
+	// 		i++;
+	// 	}
+	// 	return ptr;
+	// }
 
   public void set(int index, String value){
+    if (index > this.length){//exception
+      throw new IndexOutOfBoundsException();
+    }//end if-statement
+
     Node currentNode = this.head;
     if (index < this.length){
       for (int i = 0; i < index; i++){
@@ -43,6 +64,14 @@ public class LList{
 
 
   public void insert(int index, String value){
+    if (index > this.length){//exception
+      throw new IndexOutOfBoundsException();
+    }//end if-statement
+
+    if (value == null){//exception
+      throw new IllegalArgumentException();
+    }//end if-statement
+
     if (index == 0){
       addFront(value);
     }//end if-statement
@@ -69,11 +98,15 @@ public class LList{
       }//end if-statement
       currentNode = currentNode.getNext();
     }//end for loop
-    return -1;
+    throw new NoSuchElementException();
   }//end search method
 
 
   public void remove(int index){
+    if (index > this.length){//exception
+      throw new IndexOutOfBoundsException();
+    }//end if-statement
+
     if (index == 0){
       this.head = this.head.getNext();
     }//end if-statement
