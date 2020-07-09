@@ -21,5 +21,8 @@ public class Driver{
 
     arr2.add(1, 10);
     System.out.println(arr2);
+
+    arr2.remove(5);
+    System.out.println(arr2);
   }//end main
 }//end class

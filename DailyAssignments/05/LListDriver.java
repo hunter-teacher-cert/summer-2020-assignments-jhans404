@@ -10,14 +10,12 @@ public class LListDriver {
     System.out.println(g);
     System.out.println(g.isEmpty());
 
-
     System.out.println("\nTest addFront 3x & isEmpty():");
     g.addFront("good");
     g.addFront("news");
     g.addFront("everyone!");
     System.out.println(g);
     System.out.println(g.isEmpty());
-
 
     System.out.println("\nTest get 0, 1, 5:");
     System.out.println(g.get(0));
@@ -46,8 +44,8 @@ public class LListDriver {
     System.out.println("\nTest remove 0, 2:");
     g.remove(0);
     System.out.println(g);
-    // g.remove(2);
-    // System.out.println(g);
+    g.remove(2);
+    System.out.println(g);
 
   }//end main method
 }//end class

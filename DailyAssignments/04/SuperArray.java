@@ -59,7 +59,7 @@ public class SuperArray{
     return this.numElements == 0;
   }//end isEmpty method
 
-  public void grow(int n){
+  public void grow(int n){ //private?
     int [] largerArray = new int[this.arr.length + n];
     for (int i = 0; i < this.numElements; i++){
       largerArray[i] = this.arr[i];
@@ -71,7 +71,7 @@ public class SuperArray{
     for (int i = index; i < this.numElements; i++){
       this.arr[i] = this.arr[i + 1];
     }//end for loop (i)
-    this.arr[numElements] = 0;
+    //this.arr[numElements] = 0;
     numElements--;
   }//end remove method
 
