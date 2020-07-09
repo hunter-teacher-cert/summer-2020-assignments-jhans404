@@ -10,6 +10,7 @@ public class LList{
     this.length = 0;
   }//end constructor method
 
+
   public void addFront(String value){
     if (value == null){//exception
       throw new IllegalArgumentException();
@@ -23,7 +24,7 @@ public class LList{
 
 
   public String get(int index){
-    if (index > this.length){//exception
+    if (index < 0 || index > this.length){//exception
       throw new IndexOutOfBoundsException();
     }//end if-statement
 
@@ -48,8 +49,12 @@ public class LList{
 	// }
 
   public void set(int index, String value){
-    if (index > this.length){//exception
+    if (index < 0 || index > this.length){//exception
       throw new IndexOutOfBoundsException();
+    }//end if-statement
+
+    if (value == null){//exception
+      throw new IllegalArgumentException();
     }//end if-statement
 
     Node currentNode = this.head;
@@ -64,7 +69,7 @@ public class LList{
 
 
   public void insert(int index, String value){
-    if (index > this.length){//exception
+    if (index < 0 || index > this.length){//exception
       throw new IndexOutOfBoundsException();
     }//end if-statement
 
@@ -91,6 +96,10 @@ public class LList{
 
 
   public int search(String key){
+    if (key == null){//exception
+      throw new IllegalArgumentException();
+    }//end if-statement
+
     Node currentNode = this.head;
     for (int i = 0; i < length; i++){
       if (currentNode.getData().equals(key)){
@@ -103,7 +112,7 @@ public class LList{
 
 
   public void remove(int index){
-    if (index > this.length){//exception
+    if (index < 0 || index > this.length){//exception
       throw new IndexOutOfBoundsException();
     }//end if-statement
 
