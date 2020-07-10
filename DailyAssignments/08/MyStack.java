@@ -1,31 +1,42 @@
+import java.util.*;
+import java.io.*;
+
 public class MyStack{
-    // add your internal data structure here
+    private ArrayList<String> arr;
 
 
-    public myStack(){
-        // add constructor code
-    }
+    public MyStack(){
+      this.arr = new ArrayList<String>();
+    }//end constructor method
 
     public void push(String data){
-        // add code to push data on to the stack
-    }
+        this.arr.add(data);
+    }//end push method
 
     public String pop(){
-        // add code to remove and return the
-        // item on the top of the stack
-    }
+      String top = this.arr.get(this.arr.size() - 1);
+      this.arr.remove(this.arr.size() - 1);
+      return top;
+    }//end pop method
 
     public String top(){
-        // add code to return but not remove the
-        // item on the top of the stack
+        return this.arr.get(this.arr.size() - 1);
     }
 
     public boolean isEmpty(){
-        // return true if the stack has no data, false otherwise
-    }
+      return this.arr.size() == 0;
+    }//end isEmpty method
 
     public int size(){
-        // add code to return the number of items currently on the stack
-    }
+        return this.arr.size();
+    }//end size method
 
-}
+    public String toString(){
+      String s = "";
+      for (int i = this.arr.size() - 1; i >= 0; i--){
+        s += this.arr.get(i) + " ";
+      }//end for loop
+      return s;
+    }//end toString method
+
+}//end class
