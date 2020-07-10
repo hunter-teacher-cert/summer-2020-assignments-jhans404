@@ -16,14 +16,20 @@ public class MyStack{
 
 
     public String pop(){
-      String top = this.arr.get(this.arr.size() - 1);
-      this.arr.remove(this.arr.size() - 1);
-      return top;
+      if (!this.isEmpty()){
+        String top = this.arr.get(this.arr.size() - 1);
+        this.arr.remove(this.arr.size() - 1);
+        return top;
+      }//end if statment
+      throw new EmptyStackException();
     }//end pop method
 
 
     public String top(){
+      if (!this.isEmpty()){
         return this.arr.get(this.arr.size() - 1);
+      }//end if statment
+      throw new EmptyStackException();
     }//end top class
 
 
@@ -47,10 +53,20 @@ public class MyStack{
     }//end search method
 
 
+    public void clear(){
+      if (!this.isEmpty()){
+        for (int i = this.size() - 1; i >= 0; i--){
+          this.arr.remove(i);
+        }//end for loop
+      }//end if-statement
+      throw new EmptyStackException();
+    }//end clear method
+
+
     public String toString(){
       String s = "";
-      for (int i = this.size() - 1; i >= 0; i--){
-        s += this.arr.get(i) + " ";
+      for (String elem : this.arr){
+        s += elem + " ";
       }//end for loop
       return s;
     }//end toString method
