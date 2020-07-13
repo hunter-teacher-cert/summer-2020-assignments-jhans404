@@ -14,5 +14,14 @@ public class StackAppDriver{
     StackApp stack2 = new StackApp(s2);
     System.out.println(stack2.reverse());
     System.out.println(stack2.isPalendrome());
+
+    String expression1 = "(a + b) * c";
+    String expression2 = "(a + b * c";
+    StackApp stack3 = new StackApp(expression1);
+    StackApp stack4 = new StackApp(expression2);
+    System.out.println("\nTest 3:");
+    System.out.println(stack3.parenCheck());
+    System.out.println(stack4.parenCheck());
+
   }//end main
 }//end class
