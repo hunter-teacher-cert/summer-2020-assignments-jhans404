@@ -60,6 +60,31 @@ public class Boogle
   }//end binSearch()
 
 
+  //return index of target, or -1 if not found
+  public static int binSearchRecursively( ArrayList al, int target, int low, int high ){
+    if (low > high){
+      return -1;
+    }// end if-statement
+
+    else{
+      int mid = (low + high) / 2;
+
+      if ((int)al.get(mid) == target){
+        return mid;
+      }// end if-statement
+
+      else if((int)al.get(mid) < target){
+        return binSearchRecursively(al, target, mid + 1, high);
+      }// end else/if-statement
+
+      else{
+        return binSearchRecursively(al, target, low, mid - 1);
+      }// end else-statement
+    }// end else-statement
+
+  }//end binSearch()
+
+
   // subgoal: recognize target found (and take what action?)
   // subgoal: recognize search space exhausted (and take what action?)
   // subgoal: recognize target in lower portion of range (and do what?)
@@ -195,6 +220,7 @@ public class Boogle
 
     ArrayList<Integer> arr1 = new ArrayList<>(Arrays. asList(0, 4, 5, 6, 8, 10, 15, 16, 20, 21));
     System.out.println(binSearch(arr1, 6));
+    System.out.println(binSearchRecursively(arr1, 6, 0, arr1.size() - 1));
 
   }//end main
 
