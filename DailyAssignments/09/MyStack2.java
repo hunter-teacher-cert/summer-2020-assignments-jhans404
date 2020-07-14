@@ -31,10 +31,10 @@ public class MyStack2{
 
   public String reverse(){
     String r = "";
-    int stackSize = this.stk.size();
-    for (int i = 0; i < stackSize; i++){
+    while(this.stk.size() > 1){
       r += this.stk.pop() + " ";
-    }//end for loop
+    }//end while loop
+    r += this.stk.pop();
     return r;
   }// end reverse method
 
