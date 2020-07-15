@@ -34,19 +34,12 @@ public class Boogle
   }//end linSearch()
 
 
-
-
-
-
-
-
   //return index of target, or -1 if not found
   public static int binSearch( ArrayList al, int target )
   {
     // <INSERT YOUR MACHINERY HERE>...
     return -1; //placeholder to get past compiler
   }//end binSearch()
-
 
 
   // subgoal: recognize target found (and take what action?)
@@ -57,7 +50,6 @@ public class Boogle
   //nota bene: A helper method could be very useful.
   // Q: Why?
   // Q: What would the parameters be for such a method?
-
 
 
   //return ArrayList of random ints on range [lo,lo+hi)
@@ -115,7 +107,7 @@ public class Boogle
       int index = lo;
 
     	// loop over all the items
-      for (int i = 1; i < hi; i++){
+      for (int i = lo; i < hi; i++){
         // if the current item is smaller than the smalleest so far,
         if (al.get(i) < smallest){
           smallest = al.get(i); // then the current item becomes the new smallest so far
@@ -123,31 +115,41 @@ public class Boogle
         }// end if-statement
       }// end for loop
 
-    	// change this to return the correct answer
     	return index;
-    }
-
+    }// end findSmallest method
 
   //##################################################
   //##################################################
 
+  public static void sort(ArrayList<Integer> al){
+    // variable setup (temp to hold value at i-th position,
+    // smallestIndex to store return from helper method)
+    int temp, smallestIndex = 0;
 
-  public static void main( String[] args )
-  {
+    // loop from first index until index before last
+    for (int i = 0; i < al.size() - 1; i++){
+      // use helper method to find the where smallest value is in unsorted sublist
+      smallestIndex = findSmallest(al, i, al.size());
+
+      // make the swap
+      temp = al.get(i); // hold i-th value
+      al.set(i, al.get(smallestIndex)); // set i-th value to smallest value in sublist
+      al.set(smallestIndex, temp); // set the position where smallest was to temp
+    }// end for loop
+  }// end sort method
 
 
-    /*~~~~v~~~~~~move~me~down~~~1~block~at~a~time~~~~~~~~~~v~~~~*/
+  public static void main( String[] args ){
 
-      int smallIndex;
-      System.out.println("Testing findSmallest");
-      ArrayList<Integer>  slist = prestoArrayListo(20,0,200);
-      smallIndex = findSmallest(slist,0,slist.size());
+      // int smallIndex;
+      // System.out.println("Testing findSmallest");
+      ArrayList<Integer>  slist = prestoArrayListo(25,0,200);
+      // smallIndex = findSmallest(slist,0,slist.size());
       System.out.println(slist);
-      System.out.printf("Smallest is at slist[%d] and is %d\n",smallIndex,slist.get(smallIndex));
+      // System.out.printf("Smallest is at slist[%d] and is %d\n",smallIndex,slist.get(smallIndex));
+      sort(slist);
+      System.out.println(slist);
 
+  }// end main
 
-      /*~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~*/
-
-}//end main
-
-}//end class
+}// end class
