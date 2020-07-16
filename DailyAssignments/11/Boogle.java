@@ -121,10 +121,18 @@ public class Boogle
   //##################################################
   //##################################################
 
+
+  public static void swap(ArrayList<Integer> al, int a, int b){
+    int temp = al.get(a); // hold i-th value
+    al.set(a, al.get(b)); // set i-th value to smallest value in sublist
+    al.set(b, temp); // set the position where smallest was to temp
+  }// end swap method
+
+
   public static void sort(ArrayList<Integer> al){
     // variable setup (temp to hold value at i-th position,
     // smallestIndex to store return from helper method)
-    int temp, smallestIndex = 0;
+    int smallestIndex = 0;
 
     // loop from first index until index before last
     for (int i = 0; i < al.size() - 1; i++){
@@ -132,9 +140,7 @@ public class Boogle
       smallestIndex = findSmallest(al, i, al.size());
 
       // make the swap
-      temp = al.get(i); // hold i-th value
-      al.set(i, al.get(smallestIndex)); // set i-th value to smallest value in sublist
-      al.set(smallestIndex, temp); // set the position where smallest was to temp
+      swap(al, i, smallestIndex);
     }// end for loop
   }// end sort method
 
