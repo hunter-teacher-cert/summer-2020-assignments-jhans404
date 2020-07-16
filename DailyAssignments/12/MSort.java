@@ -63,20 +63,44 @@ public class MSort
     //setup variables
     //   make a new ArrayList
     //   indices for each input
+    ArrayList<Integer> arr = new ArrayList<Integer>();
+    int indexA = 0;
+    int indexB = 0;
 
     //while both indices are less than their respective lengths
-
-    //compare current index elements of each input list
-
-    //add the smaller value to the new list
-
-    //update index we took the value from
+    while (indexA < a.size() && indexB < b.size()){
+      //compare current index elements of each input list
+      //add the smaller value to the new list
+      //update index we took the value from
+      if (a.get(indexA) < b.get(indexB)){
+        arr.add(a.get(indexA));
+        indexA++;
+      }//end if-statement
+      else{
+        arr.add(b.get(indexB));
+        indexB++;
+      }//end else-statement
+    }//end while loop
 
     //loop ends: one index is past the end of the list
     //copy the values from the reamining list over
+    if (indexA == a.size()){
+      System.out.println(indexB);
+      while (indexB < b.size()){
+        arr.add(b.get(indexB));
+        indexB++;
+      }//end while-loop
+    }//end if-statement
+
+    else{
+      while (indexA < a.size()){
+        arr.add(a.get(indexA));
+        indexA++;
+      }//end for-loop
+    }//end else-statement
 
     //return the new list
-    return null;
+    return arr;
   }//merge
 
 
@@ -93,6 +117,7 @@ public class MSort
 
     ArrayList<Integer> randoCalrissian = merge(rando, calrissian);
     System.out.printf("randoCalrissian: %s\n", randoCalrissian);
+    System.out.println(randoCalrissian.size()); //check all elements made it in
 
   }//end main
 
