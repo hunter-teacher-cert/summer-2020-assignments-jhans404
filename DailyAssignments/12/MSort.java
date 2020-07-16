@@ -81,7 +81,7 @@ public class MSort
         indexB++;
       }//end else-statement
     }//end while loop
-
+ 
     //loop ends: one index is past the end of the list
     //copy the values from the reamining list over
     if (indexA == a.size()){
