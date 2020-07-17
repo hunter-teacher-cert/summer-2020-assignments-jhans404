@@ -81,23 +81,18 @@ public class MSort
         indexB++;
       }//end else-statement
     }//end while loop
- 
+
     //loop ends: one index is past the end of the list
     //copy the values from the reamining list over
-    if (indexA == a.size()){
-      System.out.println(indexB);
-      while (indexB < b.size()){
-        arr.add(b.get(indexB));
-        indexB++;
-      }//end while-loop
-    }//end if-statement
+    while (indexB < b.size()){
+      arr.add(b.get(indexB));
+      indexB++;
+    }//end while-loop
 
-    else{
-      while (indexA < a.size()){
-        arr.add(a.get(indexA));
-        indexA++;
-      }//end for-loop
-    }//end else-statement
+    while (indexA < a.size()){
+      arr.add(a.get(indexA));
+      indexA++;
+    }//end for-loop
 
     //return the new list
     return arr;
