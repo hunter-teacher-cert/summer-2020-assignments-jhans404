@@ -94,4 +94,22 @@ public class BSTree {
 
   }//end insert method
 
+
+  private void traverse(TreeNode current) {
+    if (current == null) {
+      return;
+    }//end if-statement
+
+    System.out.print(current.getData() + ", ");
+
+    traverse(current.getLeft());
+
+    traverse(current.getRight());
+  }//end overloaded traverse method
+
+
+  public void traverse() {
+    traverse(root);
+  }//end traverse method
+
 }//end class
