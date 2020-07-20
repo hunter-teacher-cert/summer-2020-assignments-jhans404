@@ -151,4 +151,68 @@ public class BSTree {
     System.out.println();
   }//end postorderTraverse method
 
+
+  public void delete(int key){
+    // if the tree is empty, nothing to delete
+    if (root==null) {
+      return;
+    }//end if-statement
+
+
+    // find the node that we want to delete
+    // and the node above it using piggybacking
+    TreeNode front = root;
+    TreeNode trailer = root;
+
+    // do the piggyback loop
+    // until we either find the node or null
+    // if the key isn't present
+    while (front != null && front.getData() != key) {
+      if (front.getData() < key) {
+        trailer = front;
+        front = front.getRight();
+      }//end if-statement
+
+      else {
+        trailer = front;
+        front = front.getLeft();
+      }//end else-statement
+    }//end while loop
+
+    // if the key wasn't in the tree
+    if (front == null) {
+      return;
+    }
+
+    // if we get here
+    // front points to the node we want to delete
+    // and trailer points to the one above it
+
+    // case 1 -- the node we want to delete is a leaf
+    if (front.getLeft() == null && front.getRight() == null) {
+      // repoint front's parent to null
+      if (trailer.getLeft() != null) {
+        trailer.setLeft(null);
+      }//end if-statement
+
+      else {
+        trailer.setRight(null);
+      }//end else-statement
+    }//end if-statment (case 1)
+
+    // case 2
+    else if (true /* check to see if front has one child */) {
+      // repoint front's parent to front's child
+    }
+
+    else {
+      // front has two children
+      //
+      // find the node with the largest value
+      // on fronts left subtree
+      // and replace front with it.
+    }//end else-statement
+
+  }//end delete method
+
 }//end class
