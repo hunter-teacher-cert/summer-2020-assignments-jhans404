@@ -201,10 +201,15 @@ public class BSTree {
       }//end else-statement
     }//end if-statment (case 1)
 
-    // case 2
-    else if (true /* check to see if front has one child */) {
+    // case 2 (broken into two else-ifs)
+    else if (front.getLeft() == null && front.getRight() != null) { //has child on right only
       // repoint front's parent to front's child
-    }
+      trailer.setRight(front.getRight());
+    }//end else-if statement
+
+    else if (front.getRight() == null && front.getLeft() != null) { //has child on left only
+      trailer.setLeft(front.getLeft());
+    }//end else-if statement
 
     else {
       // front has two children
