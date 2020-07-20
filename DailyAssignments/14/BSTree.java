@@ -95,21 +95,60 @@ public class BSTree {
   }//end insert method
 
 
-  private void traverse(TreeNode current) {
+  private void preorderTraverse(TreeNode current) {
     if (current == null) {
       return;
     }//end if-statement
 
     System.out.print(current.getData() + ", ");
 
-    traverse(current.getLeft());
+    preorderTraverse(current.getLeft());
 
-    traverse(current.getRight());
-  }//end overloaded traverse method
+    preorderTraverse(current.getRight());
+  }//end overloaded preorderTraverse method
 
 
-  public void traverse() {
-    traverse(root);
-  }//end traverse method
+  public void preorderTraverse() {
+    preorderTraverse(root);
+    System.out.println();
+  }//end preorderTraverse method
+
+
+  private void inorderTraverse(TreeNode current) {
+    if (current == null) {
+      return;
+    }//end if-statement
+
+    inorderTraverse(current.getLeft());
+
+    System.out.print(current.getData() + ", ");
+
+    inorderTraverse(current.getRight());
+  }//end overloaded inorderTraverse method
+
+
+  public void inorderTraverse() {
+    inorderTraverse(root);
+    System.out.println();
+  }//end inorderTraverse method
+
+
+  private void postorderTraverse(TreeNode current) {
+    if (current == null) {
+      return;
+    }//end if-statement
+
+    postorderTraverse(current.getLeft());
+
+    postorderTraverse(current.getRight());
+
+    System.out.print(current.getData() + ", ");
+  }//end overloaded postorderTraverse method
+
+
+  public void postorderTraverse() {
+    postorderTraverse(root);
+    System.out.println();
+  }//end postorderTraverse method
 
 }//end class
