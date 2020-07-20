@@ -55,4 +55,43 @@ public class BSTree {
     throw new NullPointerException();
   }//end search method
 
+
+  public void insert(int val) {
+    TreeNode newNode = new TreeNode(val);
+
+    if (root == null) {
+      root = newNode;
+      return;
+    }//end if-statement
+
+    TreeNode front = root;
+    TreeNode trailer = null;
+
+    while (front != null) {
+      int currentValue = front.getData();
+      if (currentValue == val) {
+        return;
+      }//end if-statement
+
+      else if (currentValue < val) {
+        trailer = front;
+        front = front.getRight();
+      }//end else/if-statement
+
+      else {
+        trailer = front;
+        front = front.getLeft();
+      }//end else-statement
+    }//end while loop
+
+    if (trailer.getData() < val) {
+      trailer.setRight(newNode);
+    }//end if-statement
+
+    else {
+      trailer.setLeft(newNode);
+    }//end else-statement
+
+  }//end insert method
+
 }//end class
