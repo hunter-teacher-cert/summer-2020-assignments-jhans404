@@ -67,23 +67,24 @@ public class BSTree {
     TreeNode front = root;
     TreeNode trailer = null;
 
-    while (front != null) {
+    while (front != null) { //reach the end of the tree
       int currentValue = front.getData();
       if (currentValue == val) {
         return;
       }//end if-statement
 
-      else if (currentValue < val) {
+      else if (currentValue < val) { //if the insert value is greater than current node, go down right path
         trailer = front;
         front = front.getRight();
       }//end else/if-statement
 
-      else {
+      else { //go down left path since the insert value must be less than the current node
         trailer = front;
         front = front.getLeft();
       }//end else-statement
     }//end while loop
 
+    //once we are in the correct spot, add the new node in (either left or right)
     if (trailer.getData() < val) {
       trailer.setRight(newNode);
     }//end if-statement
