@@ -192,7 +192,7 @@ public class BSTree {
     // case 1 -- the node we want to delete is a leaf
     if (front.getLeft() == null && front.getRight() == null) {
       // repoint front's parent to null
-      if (trailer.getLeft() != null) {
+      if (trailer.getLeft() != null && trailer.getData() > key) {
         trailer.setLeft(null);
       }//end if-statement
 
