@@ -204,19 +204,30 @@ public class BSTree {
     // case 2 (broken into two else-ifs)
     else if (front.getLeft() == null && front.getRight() != null) { //has child on right only
       // repoint front's parent to front's child
-      System.out.println(trailer.getData() + " " + front.getData());
-      trailer.setRight(front.getRight());
+      if (trailer.getLeft() != null) {
+        trailer.setLeft(front.getRight());
+      }//end if-statement
+
+      else {
+        trailer.setRight(front.getRight());
+      }//end else-statement
     }//end else-if statement
 
     else if (front.getRight() == null && front.getLeft() != null) { //has child on left only
-      trailer.setLeft(front.getLeft());
+      if (trailer.getLeft() != null) {
+        trailer.setLeft(front.getLeft());
+      }//end if-statement
+
+      else {
+        trailer.setRight(front.getLeft());
+      }//end else-statement
     }//end else-if statement
 
     else { // front has two children
       // find the node with the largest value
       // on fronts left subtree
       // and replace front with it.
-      TreeNode current = front; //save the node to be deleted
+      TreeNode toBeDeleted = front; //save the node to be deleted
 
       front = front.getLeft(); //move left
       trailer = front;
@@ -224,11 +235,11 @@ public class BSTree {
       while (front.getRight() != null) { //while there's a child to the right, keep moving down that path
         trailer = front;
         front = front.getRight();
-      }
+      }//end while loop
 
-      current.setData(front.getData()); //set the deletion node to the right-most
+      toBeDeleted.setData(front.getData()); //set the deletion node to the right-most
       if (trailer == front) { //left node didn't have a path on the right
-        current.setLeft(null);
+        toBeDeleted.setLeft(null);
       }//end if-statement
 
       else { //went down the path on the right of the left node
