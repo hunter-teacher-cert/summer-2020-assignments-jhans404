@@ -28,9 +28,33 @@ public class PhoneBook {
     }//end else-statement
   }//end add method
 
-  public void test() {
-    System.out.println("key: 3, value: " + book.get(3));
-  }//end test method
+
+  public String lookup(String n) {
+    String name = "";
+    Integer key = reducePhoneNumber(n);
+
+    LinkedList<Person> p = book.get(key);
+    for (int i = 0; i < p.size(); i++) {
+      if (p.get(i).getPhoneNumber().equals(n)) {
+        name += (p.get(i).getFirstName() + " " + p.get(i).getLastName());
+        return name;
+      }//end if statement
+    }//end for loop
+
+    throw new NoSuchElementException();
+  }//end lookup method
+
+
+  private Integer reducePhoneNumber(String n) {
+    Integer total = 0;
+
+    for (int i = 0; i < n.length() - 1; i++) {
+      total += Integer.parseInt(n.substring(i, i + 1));
+    }
+    total += Integer.parseInt(n.substring(n.length() - 1));
+    return total % 11;
+  }//end reducePhoneNumber method
+
 
   public String toString() {
     String toReturn = "";
