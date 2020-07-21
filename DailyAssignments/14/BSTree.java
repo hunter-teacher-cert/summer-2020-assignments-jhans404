@@ -204,7 +204,7 @@ public class BSTree {
     // case 2 (broken into two else-ifs)
     else if (front.getLeft() == null && front.getRight() != null) { //has child on right only
       // repoint front's parent to front's child
-      if (trailer.getLeft() != null) { //the parent has to connect to the grandchild in the same direction the child came from
+      if (trailer.getLeft() != null && trailer.getLeft().getData() == key) { //the parent has to connect to the grandchild in the same direction the child came from
         trailer.setLeft(front.getRight());
       }//end if-statement
 
@@ -214,7 +214,7 @@ public class BSTree {
     }//end else-if statement
 
     else if (front.getRight() == null && front.getLeft() != null) { //has child on left only
-      if (trailer.getLeft() != null) {
+      if (trailer.getLeft() != null && trailer.getLeft().getData() == key) {
         trailer.setLeft(front.getLeft());
       }//end if-statement
 
