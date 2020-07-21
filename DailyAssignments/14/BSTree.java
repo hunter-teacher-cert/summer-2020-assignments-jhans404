@@ -244,12 +244,12 @@ public class BSTree {
       }//end if-statement
 
       else { //went down the path on the right of the left node
-        if (front.getLeft() != null) {
+        if (front.getLeft() != null) { //don't lose the possible children from the node
           trailer.setRight(front.getLeft());
         }//end if-statement
 
         else {
-          trailer.setRight(null);
+          trailer.setRight(null); //node had no children
         }//end else-statement
       }//end else-statement
     }//end else-statement
