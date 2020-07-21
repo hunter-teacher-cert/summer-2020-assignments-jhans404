@@ -204,7 +204,7 @@ public class BSTree {
     // case 2 (broken into two else-ifs)
     else if (front.getLeft() == null && front.getRight() != null) { //has child on right only
       // repoint front's parent to front's child
-      if (trailer.getLeft() != null) {
+      if (trailer.getLeft() != null) { //the parent has to connect to the grandchild in the same direction the child came from
         trailer.setLeft(front.getRight());
       }//end if-statement
 
@@ -238,12 +238,19 @@ public class BSTree {
       }//end while loop
 
       toBeDeleted.setData(front.getData()); //set the deletion node to the right-most
+
       if (trailer == front) { //left node didn't have a path on the right
         toBeDeleted.setLeft(null);
       }//end if-statement
 
       else { //went down the path on the right of the left node
-        trailer.setRight(null);
+        if (front.getLeft() != null) {
+          trailer.setRight(front.getLeft());
+        }//end if-statement
+
+        else {
+          trailer.setRight(null);
+        }//end else-statement
       }//end else-statement
     }//end else-statement
 
